@@ -2908,6 +2908,9 @@ spec:
                       disableMasquerade:
                         description: DisableMasquerade disables masquerading traffic
                           to external destinations behind the node IP.
+                      enableEndpointRoutes:
+                        description: 'EnableEndpointRoutes use per endpoint routes
+                          instead of routing via cilium_host. Default: false'
                         type: boolean
                       enableNodePort:
                         description: 'EnableNodePort replaces kube-proxy with Cilium''s

@@ -4450,6 +4450,9 @@ data:
   blacklist-conflicting-routes: "false"
   {{ end }}
   {{ end }}
+  {{ if ne .Ipam "eni" }}
+  enable-endpoint-routes: "{{- if .EnableEndpointRoutes -}}true{{- else -}}false{{- end -}}"
+  {{ end }}
 {{ end }} # With .Networking.Cilium end
 ---
 apiVersion: v1
@@ -5238,6 +5241,9 @@ data:
   blacklist-conflicting-routes: "false"
   {{ end }}
   {{ end }}
+  {{ if ne .Ipam "eni" }}
+  enable-endpoint-routes: "{{- if .EnableEndpointRoutes -}}true{{- else -}}false{{- end -}}"
+  {{ end }}
 {{ end }} # With .Networking.Cilium end
 ---
 apiVersion: v1
@@ -5798,7 +5804,8 @@ spec:
         operator: Exists
         tolerationSeconds: 300
        {{ end }}
-{{ end }}`)
+{{ end }}
+`)
 
 func cloudupResourcesAddonsNetworkingCiliumIoK8s17YamlTemplateBytes() ([]byte, error) {
 	return _cloudupResourcesAddonsNetworkingCiliumIoK8s17YamlTemplate, nil

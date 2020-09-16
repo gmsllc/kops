@@ -472,6 +472,12 @@ func Test_Validate_Cilium(t *testing.T) {
 			},
 			ExpectedErrors: []string{"Forbidden::cilium.ipam"},
 		},
+		{
+			Cilium: kops.CiliumNetworkingSpec{
+				Version: "v1.8.0",
+				EnableEndpointRoutes: true,
+			},
+		},
 	}
 	for _, g := range grid {
 		g.Spec.Networking = &kops.NetworkingSpec{
